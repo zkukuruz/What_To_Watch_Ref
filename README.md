@@ -1,42 +1,56 @@
+
 ### Как запустить проект:
 
 Клонировать репозиторий и перейти в него в командной строке:
 
-```
-git clone 
-```
-
-```
+```bash
+git clone
 cd what_to_watch
 ```
 
-Cоздать и активировать виртуальное окружение:
+Создать и активировать виртуальное окружение:
 
-```
+```bash
 python3 -m venv venv
-```
-
-```
 source venv/bin/activate
 ```
-или для пользователей Windows
 
-```
+Или для пользователей Windows:
+
+```bash
 source env/Scripts/activate
 ```
 
-Установить зависимости из файла requirements.txt:
+Установить зависимости:
 
-```
+```bash
 python3 -m pip install --upgrade pip
+pip install -r requirements.txt
 ```
 
+Настроить переменные окружения (создать файл `.env`):
+
+```bash
+FLASK_APP=opinions_app
+FLASK_DEBUG=1
 ```
-pip install -r requirements.txt
+
+Инициализировать и применить миграции:
+
+```bash
+flask db init
+flask db migrate -m "initial migration"
+flask db upgrade
+```
+
+Загрузить начальные данные из CSV:
+
+```bash
+flask load_opinions
 ```
 
 Запустить проект:
 
-```
+```bash
 flask run
 ```
